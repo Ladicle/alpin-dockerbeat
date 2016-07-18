@@ -7,7 +7,7 @@ while true; do
 done
 
 echo "Register index template to Elasticsearch"
-curl -X PUT http://elasticsearch:9200/_template/dockerbeat \
+curl -s -X PUT http://elasticsearch:9200/_template/dockerbeat \
      -d@/etc/dockerbeat/dockerbeat.template.json
 
 echo "Start dockerbeat"

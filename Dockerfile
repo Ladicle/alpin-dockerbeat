@@ -5,20 +5,12 @@ ARG PYYAML_VERSION=3.11
 # Install dependency packages
 RUN set -ex \
     && apk add --update \
-           python \
            git \
            curl \
-    && rm -rf /var/cache/apk/* \
-    && cd /tmp \
-    && curl -O -L http://pyyaml.org/download/pyyaml/PyYAML-$PYYAML_VERSION.tar.gz \
-    && tar -zxvf PyYAML-$PYYAML_VERSION.tar.gz \
-    && cd PyYAML-$PYYAML_VERSION \
-    && python setup.py install \
-    && rm /tmp/PyYAML-$PYYAML_VERSION.tar.gz
+    && rm -rf /var/cache/apk/*
 
 # Install Dockerbeat
 RUN set -ex \
-    && go get github.com/Masterminds/glide \
     && go get github.com/ingensi/dockerbeat \
     && mkdir /etc/dockerbeat \
     && cd $GOPATH/src/github.com/ingensi/dockerbeat \

@@ -20,7 +20,9 @@ RUN set -ex \
 RUN set -ex \
     && go get github.com/Masterminds/glide \
     && go get github.com/ingensi/dockerbeat \
-    && mkdir /etc/dockerbeat
+    && mkdir /etc/dockerbeat \
+    && cd $GOPATH/src/github.com/ingensi/dockerbeat \
+    && cp etc/dockerbeat.template.json /etc/dockerbeat
 COPY dockerbeat.yml /etc/dockerbeat/dockerbeat.yml
 
 # Setup entrypoint

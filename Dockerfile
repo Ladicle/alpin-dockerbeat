@@ -7,9 +7,10 @@ RUN set -ex \
     && apk add --update \
            python \
            git \
+           curl \
     && rm -rf /var/cache/apk/* \
     && cd /tmp \
-    && wget http://pyyaml.org/download/pyyaml/PyYAML-$PYYAML_VERSION.tar.gz \
+    && curl -O -L http://pyyaml.org/download/pyyaml/PyYAML-$PYYAML_VERSION.tar.gz \
     && tar -zxvf PyYAML-$PYYAML_VERSION.tar.gz \
     && cd PyYAML-$PYYAML_VERSION \
     && python setup.py install \
